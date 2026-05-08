@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Search, Film, Sparkles, Heart, Zap, Moon, Smile } from "lucide-react";
 
-const moodMap = {
+let moodMap = {
   Happy: "comedy",
   Sad: "drama",
   Excited: "action",
@@ -9,7 +9,7 @@ const moodMap = {
   Chill: "sci-fi",
 };
 
-const moodIcons = {
+let moodIcons = {
   Happy: <Smile className="w-5 h-5" />,
   Sad: <Moon className="w-5 h-5" />,
   Excited: <Zap className="w-5 h-5" />,
@@ -18,25 +18,25 @@ const moodIcons = {
 };
 
 export default function MoodMovieFinder() {
-  const [selectedMood, setSelectedMood] = useState("");
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
+  let [selectedMood, setSelectedMood] = useState("");
+  let [movies, setMovies] = useState([]);
+  let [loading, setLoading] = useState(false);
 
-  const fetchMovies = async (mood) => {
+  let fetchMovies = async (mood) => {
     setSelectedMood(mood);
     setLoading(true);
 
     try {
       // Open Source Dummy API
-      const genre = moodMap[mood];
+      let genre = moodMap[mood];
 
-      const response = await fetch(
+      let response = await fetch(
         `https://api.tvmaze.com/search/shows?q=${genre}`
       );
 
-      const data = await response.json();
+      let data = await response.json();
 
-      const formatted = data.slice(0, 12).map((item) => ({
+      let formatted = data.slice(0, 12).map((item) => ({
         id: item.show.id,
         title: item.show.name,
         image:
