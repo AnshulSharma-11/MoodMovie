@@ -1,12 +1,13 @@
 import React from 'react'
-import MoodMovieFinder from './MoodMovieFinder'
+import MoodFlix from './MoodFlix'
+
 
 export default function App() {
   return (
-    
-    
     <div>
-      <MoodMovieFinder/>
+      
+    <MoodFlix/>
+
     </div>
   )
 }
