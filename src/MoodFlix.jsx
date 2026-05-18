@@ -1,5 +1,5 @@
 import "./MoodFlix.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
 export default function MoodFlix() {
