@@ -1,8 +1,10 @@
 import "./MoodFlix.css";
 import { useEffect, useState } from "react";
 
-function MoodFlix() {
-  const moods = [
+
+export default function MoodFlix() {
+  
+  let moods = [
     { label: "Happy", icon: "bi-emoji-smile", genre: "comedy" },
     { label: "Sad", icon: "bi-cloud-drizzle", genre: "drama" },
     { label: "Excited", icon: "bi-lightning-charge", genre: "action" },
@@ -10,24 +12,24 @@ function MoodFlix() {
     { label: "Chill", icon: "bi-stars", genre: "sci-fi" },
   ];
 
-  const [selectedMood, setSelectedMood] = useState("");
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
+  let [selectedMood, setSelectedMood] = useState("");
+  let [movies, setMovies] = useState([]);
+  let [loading, setLoading] = useState(false);
 
-  const fetchMovies = async (mood) => {
+  let fetchMovies = async (mood) => {
     if (selectedMood === mood.label) return;
 
     setSelectedMood(mood.label);
     setLoading(true);
 
     try {
-      const res = await fetch(
+      let res = await fetch(
         `https://api.tvmaze.com/search/shows?q=${mood.genre}`
       );
 
-      const data = await res.json();
+      let data = await res.json();
 
-      const formattedMovies = data.slice(0, 12).map((item) => ({
+      let formattedMovies = data.slice(0, 12).map((item) => ({
         id: item.show.id,
         title: item.show.name,
         image: item.show.image?.medium || "",
@@ -45,6 +47,7 @@ function MoodFlix() {
     setLoading(false);
   };
 
+  
   return (
     <div className="app-container">
       <div className="d-flex align-items-center gap-2 mb-3">
@@ -151,4 +154,4 @@ function MoodFlix() {
   );
 }
 
-export default MoodFlix;
+
